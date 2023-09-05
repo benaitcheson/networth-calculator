@@ -4,6 +4,6 @@ Rails.application.routes.draw do
   # users
   resources :users, only: %i[index show new create edit update]
 
-  #assets
-  
+  # assets
+  resources :user_assets, only: %i[index show new create edit update]
 end
