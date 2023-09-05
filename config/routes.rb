@@ -1,6 +1,9 @@
 Rails.application.routes.draw do
-  # Define your application routes per the DSL in https://guides.rubyonrails.org/routing.html
+  root 'users#index'
 
-  # Defines the root path route ("/")
-  # root "articles#index"
+  # users
+  resources :users, only: %i[index show new create edit update]
+
+  #assets
+  
 end
