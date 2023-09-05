@@ -1,24 +1,3 @@
-# README
+# Net Worth Calculator
 
-This README would normally document whatever steps are necessary to get the
-application up and running.
-
-Things you may want to cover:
-
-* Ruby version
-
-* System dependencies
-
-* Configuration
-
-* Database creation
-
-* Database initialization
-
-* How to run the test suite
-
-* Services (job queues, cache servers, search engines, etc.)
-
-* Deployment instructions
-
-* ...
+This project is for me to track my own personal net worth. I have a spreadsheet that I use to track my net worth, but I wanted to build a web app that would allow me to track my net worth over time and see how it changes. I also wanted to be able to see how my net worth changes based on different scenarios. For example, if I were to lose my job, how would that affect my net worth? Or if I were to get a raise, how would that affect my net worth?
