@@ -1,5 +1,5 @@
 class UserAssetsController < ApplicationController
-  before_action :set_user_asset, only: %i[show edit update destroy]
+  before_action :set_user_asset, exclude: %i[index new create]
 
   def index
     @user_assets = UserAsset.all
@@ -47,5 +47,7 @@ class UserAssetsController < ApplicationController
 
   def set_user_asset
     @user_asset = UserAsset.find(params[:id])
+  rescue ActiveRecord::RecordNotFound
+    redirect_to root_path, notice: 'User Asset not found'
   end
 end
