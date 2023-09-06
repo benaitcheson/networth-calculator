@@ -1,1 +1,6 @@
-nav
+<% if user_signed_in? %>
+  <%= button_to "Edit profile", edit_user_registration_path %>
+  <%= button_to "Sign out", destroy_user_session_path, method: :delete, remote: true %>
+<% else %>
+  <%= button_to "Sign in", new_user_session_path %>
+<% end %>
