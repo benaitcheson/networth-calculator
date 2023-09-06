@@ -1,16 +1,18 @@
 class UserAssetsController < ApplicationController
+  before_action :set_user_asset, only: %i[show edit update destroy]
+
   def index
+    @user_assets = UserAsset.all
   end
 
   def new
+    @user_asset = UserAsset.new
   end
 
   def show
-    @user_asset = UserAsset.find(params[:id])
   end
 
   def edit
-    @user_asset = UserAsset.find(params[:id])
   end
 
   def create
@@ -24,8 +26,6 @@ class UserAssetsController < ApplicationController
   end
 
   def update
-    @user_asset = UserAsset.find(params[:id])
-
     if @user_asset.update(user_asset_params)
       redirect_to @user_asset
     else
@@ -33,9 +33,19 @@ class UserAssetsController < ApplicationController
     end
   end
 
+  def destroy
+    @user_asset.destroy
+
+    redirect_to root_path
+  end
+
   private
 
-  def asset_params
-    params.require(:user_asset).permit(:name, :amount)
+  def user_asset_params
+    params.require(:user_asset).permit(:title, :amount, :description)
+  end
+
+  def set_user_asset
+    @user_asset = UserAsset.find(params[:id])
   end
 end
