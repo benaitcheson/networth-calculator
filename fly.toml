@@ -1,15 +1,15 @@
-# fly.toml file generated for networth-calculator on 2023-09-06T22:23:00+10:00
+# fly.toml app configuration file generated for networth-calculator on 2023-09-09T18:24:13+10:00
+#
+# See https://fly.io/docs/reference/configuration/ for information about how to use this file.
+#
 
 app = "networth-calculator"
+primary_region = "syd"
 kill_signal = "SIGINT"
-kill_timeout = 5
-mounts = []
-processes = []
+kill_timeout = "5s"
+console_command = "/rails/bin/rails console"
 
 [build]
-  [build.args]
-    BUILD_COMMAND = "bin/rails fly:build"
-    SERVER_COMMAND = "bin/rails fly:server"
 
 [deploy]
   release_command = "bin/rails fly:release"
@@ -18,22 +18,22 @@ processes = []
   PORT = "8080"
 
 [[services]]
-  internal_port = 8080
-  processes = ["app"]
   protocol = "tcp"
+  internal_port = 3000
+  processes = ["app"]
+
+  [[services.ports]]
+    port = 80
+    handlers = ["http"]
+    force_https = true
+
+  [[services.ports]]
+    port = 443
+    handlers = ["tls", "http"]
   [services.concurrency]
+    type = "connections"
     hard_limit = 25
     soft_limit = 20
-    type = "connections"
-
-  [[services.ports]]
-    force_https = true
-    handlers = ["http"]
-    port = 80
-
-  [[services.ports]]
-    handlers = ["tls", "http"]
-    port = 443
 
 [[statics]]
   guest_path = "/app/public"

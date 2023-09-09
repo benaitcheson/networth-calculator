@@ -94,6 +94,8 @@ GEM
       railties (>= 4.1.0)
       responders
       warden (~> 1.2.3)
+    dockerfile-rails (1.5.4)
+      rails
     erubi (1.12.0)
     globalid (1.2.0)
       activesupport (>= 6.1)
@@ -241,6 +243,7 @@ DEPENDENCIES
   capybara
   debug
   devise (~> 4.9)
+  dockerfile-rails (>= 1.5)
   importmap-rails
   jbuilder
   pg (~> 1.5)
